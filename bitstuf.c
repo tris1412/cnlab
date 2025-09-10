@@ -25,7 +25,7 @@ int main() {
             count = 0;
         }
     }
-
+    b[j]='\0';
     strcat(b, flag);  
     
     printf("Stuffed frame: %s\n", b);
