@@ -2,34 +2,25 @@
 #include <string.h>
 
 int main() {
-    char a[100], b[200];
-    int n, i, m = 1, fl;
+    char msg[100];
+    int frameLength, index = 0;
 
-    printf("Enter the string:\n");
-    scanf("%s", a);
+    printf("Enter the message:\n");
+    scanf("%s", msg);
 
-    n = strlen(a);
-    int index = 0;
-    b[0] = 's'; // start marker
+    printf("Enter frame lengths one by one (program stops when message ends):\n");
 
-    printf("Variable Length Framing:\n");
-
-    while (index < n) {
+    while (msg[index] != '\0') {
         printf("Enter the current frame length: ");
-        scanf("%d", &fl);
+        scanf("%d", &frameLength);
 
-        for (i = 0; i < fl && index < n; i++) {
-            b[m++] = a[index++];
+        for (int i = 0; i < frameLength && msg[index] != '\0'; i++) {
+            printf("%c", msg[index++]);  // print character and move index
         }
-
-        // Append the frame length as a character
-        b[m++] = fl + '0';
+        printf("%d\n", frameLength);       // print frame length as 
     }
 
-    b[m++] = 'd'; // end marker
-    b[m] = '\0';
-
-    printf("%s\n", b);
+    printf("\n");
     return 0;
 }
 
